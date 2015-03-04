@@ -1,0 +1,123 @@
+/* general styles */
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+/* padded section */
+.pad-section {
+    padding: 50px 0;
+}
+
+.pad-section img {
+    width: 100%;
+}
+
+/* vertical-centered text */
+.text-vcenter {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.text-vcenter h1 {
+    font-size: 4.5em;
+    font-weight: 700;
+    margin: 0;
+    padding: 0;
+}
+
+/* additional sections */
+#main {
+    background: url("../img/sky.jpg") no-repeat fixed center top;
+    display: table;
+    height: 50%;
+    position: relative;
+    width: 100%;
+    color: #ffffff;
+    text-shadow: 2px 2px 2px black;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    margin-bottom: 100px;
+}
+
+footer {
+    padding: 20px 0;
+}
+
+footer .glyphicon {
+    color: #333333;
+    font-size: 60px;
+}
+
+footer .glyphicon:hover {
+    color: #306d9f;
+}
+
+.scroll-top {
+    position: fixed;
+    bottom: 0;
+    left: 6%;
+    z-index: 100;
+    background: #f2f3f2;
+    font-size: 24px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+
+.scroll-top a:link, .scroll-top a:visited {
+    color:#222;
+}
+
+table tbody, table thead tr > th{
+    text-align: center;
+}
+
+.table-striped > tbody > tr:nth-of-type(2n+1) {
+    background-color: rgba(189, 188, 188, 0.31);
+}
+
+@media (min-width: 768px) {
+    .icon-font-md {
+        font-size: 40px;
+    }
+    .icon-font-lg {
+        font-size: 70px;
+    }
+
+    .icon-font-table-md {
+        font-size: 20px;
+    }
+
+    .icon-font-table-lg {
+        font-size: 40px;
+    }
+
+    .col-sm-2 {
+        width: 20%;
+    }
+}
+
+@media (min-width: 1200px) {
+    .icon-font-md {
+        font-size: 60px;
+    }
+
+    .icon-font-lg {
+        font-size: 100px;
+    }
+
+    .icon-font-table-md {
+        font-size: 40px
+    }
+
+    .icon-font-table-lg {
+        font-size: 60px;
+    }
+
+    .col-lg-2 {
+        width: 20%;
+    }
+}
