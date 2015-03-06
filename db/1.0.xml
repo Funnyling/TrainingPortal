@@ -77,7 +77,9 @@
             DESCRIPTION varchar(2000),
             REQUIREMENTS varchar(2000) NOT NULL,
             MAX_NUMBER_STUDENTS varchar(2000) NOT NULL,
+            LECTURER_ID BIGIND NOT NULL,
             ADD_DATE timestamp default now()
+            CONSTRAINT FK_LECTURER_ID FOREIGN KEY(LECTURER_ID) REFERENCES TRAINING_CENTER.USERS(USER_ID) ON DELETE RESTRICT
             )
         </sql>
     </changeSet>

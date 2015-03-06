@@ -19,6 +19,7 @@ public class Course extends BaseEntity {
     private BigDecimal price;
     private Calendar startDate;
     private Calendar endDate;
+    private User lecturer;
 
     public Long getCourseId() {
         return courseId;
@@ -90,5 +91,13 @@ public class Course extends BaseEntity {
 
     public void setEndDate(Calendar endDate) {
         this.endDate = endDate;
+    }
+
+    public User getLecturer() {
+        return lecturer;
+    }
+
+    public void setLecturer(User lecturer) {
+        this.lecturer = lecturer;
     }
 }
