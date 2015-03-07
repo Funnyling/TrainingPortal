@@ -77,9 +77,23 @@
             DESCRIPTION varchar(2000),
             REQUIREMENTS varchar(2000) NOT NULL,
             MAX_NUMBER_STUDENTS varchar(2000) NOT NULL,
-            LECTURER_ID BIGIND NOT NULL,
-            ADD_DATE timestamp default now()
+            LECTURER_ID BIGINT NOT NULL,
+            ADD_DATE timestamp default now(),
             CONSTRAINT FK_LECTURER_ID FOREIGN KEY(LECTURER_ID) REFERENCES TRAINING_CENTER.USERS(USER_ID) ON DELETE RESTRICT
+            )
+        </sql>
+    </changeSet>
+
+    <changeSet author="ntishkevich" id="20150305-06" runAlways="true" runOnChange="true">
+        <comment>Courses_Users</comment>
+        <sql>
+            CREATE TABLE TRAINING_CENTER.COURSES_USERS
+            (
+            COURSE_ID BIGINT NOT NULL ,
+            USER_ID BIGINT NOT NULL,
+            PRIMARY KEY (COURSE_ID, USER_ID),
+            CONSTRAINT FK_COURSE_ID FOREIGN KEY(COURSE_ID) REFERENCES TRAINING_CENTER.COURSES(COURSE_ID) ON DELETE RESTRICT,
+            CONSTRAINT FK_USER_ID FOREIGN KEY(USER_ID) REFERENCES TRAINING_CENTER.USERS(USER_ID) ON DELETE RESTRICT
             )
         </sql>
     </changeSet>

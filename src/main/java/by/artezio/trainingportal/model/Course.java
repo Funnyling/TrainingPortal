@@ -4,6 +4,7 @@ import by.artezio.trainingportal.model.enumeration.CourseStatus;
 
 import java.math.BigDecimal;
 import java.util.Calendar;
+import java.util.Set;
 
 /**
  * Created by user on 04.03.2015.
@@ -20,6 +21,7 @@ public class Course extends BaseEntity {
     private Calendar startDate;
     private Calendar endDate;
     private User lecturer;
+    private Set<User> students;
 
     public Long getCourseId() {
         return courseId;
@@ -99,5 +101,13 @@ public class Course extends BaseEntity {
 
     public void setLecturer(User lecturer) {
         this.lecturer = lecturer;
+    }
+
+    public Set<User> getStudents() {
+        return students;
+    }
+
+    public void setStudents(Set<User> students) {
+        this.students = students;
     }
 }

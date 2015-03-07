@@ -2,6 +2,8 @@ package by.artezio.trainingportal.model;
 
 import by.artezio.trainingportal.model.enumeration.UserRole;
 
+import java.util.Set;
+
 /**
  * Created by user on 04.03.2015.
  */
@@ -14,6 +16,7 @@ public class User extends BaseEntity {
     private String login;
     private String password;
     private UserRole role;
+    private Set<Course> courses;
 
     public Long getUserId() {
         return userId;
@@ -69,5 +72,13 @@ public class User extends BaseEntity {
 
     public void setRole(UserRole role) {
         this.role = role;
+    }
+
+    public Set<Course> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(Set<Course> courses) {
+        this.courses = courses;
     }
 }
