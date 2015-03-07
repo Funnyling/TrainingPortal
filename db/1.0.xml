@@ -44,9 +44,9 @@
             USER_ID BIGINT PRIMARY KEY DEFAULT nextval('user_seq'),
             NAME varchar(2000),
             SURNAME varchar(2000),
-            EMAIL varchar(2000) NOT NULL,
+            EMAIL varchar(2000) NOT NULL UNIQUE,
             PASSWORD varchar(2000) NOT NULL,
-            LOGIN varchar(2000) NOT NULL,
+            LOGIN varchar(2000) NOT NULL UNIQUE,
             ROLE varchar(2000) NOT NULL,
             REGISTRATION_DATE timestamp default now()
             )

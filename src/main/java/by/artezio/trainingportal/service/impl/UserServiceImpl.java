@@ -11,4 +11,9 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class UserServiceImpl extends AbstractSpringService<UserDao, User> implements UserService {
+
+    @Override
+    public User findUserByLogin(String login) {
+        return getDao().findUserByLogin(login);
+    }
 }
