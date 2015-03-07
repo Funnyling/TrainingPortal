@@ -8,19 +8,19 @@
 
     <changeSet author="ntishkevich" id="20150305-00" runAlways="true" runOnChange="true">
         <preConditions onFail="MARK_RAN">
-            <sqlCheck expectedResult="1">select count(*) from information_schema.schemata WHERE schema_name = 'training_center';</sqlCheck>
+            <sqlCheck expectedResult="1">select count(*) from information_schema.schemata WHERE schema_name = 'training_portal';</sqlCheck>
         </preConditions>
         <sql>
-            DROP SCHEMA TRAINING_CENTER CASCADE;
-            DROP SEQUENCE user_seq;
-            DROP SEQUENCE course_seq;
+            DROP SCHEMA TRAINING_PORTAL CASCADE;
+            DROP SEQUENCE user_seq CASCADE;
+            DROP SEQUENCE course_seq CASCADE;
         </sql>
     </changeSet>
 
 
     <changeSet author="ntishkevich" id="20150305-01" runAlways="true" runOnChange="true">
         <sql>
-            CREATE SCHEMA TRAINING_CENTER;
+            CREATE SCHEMA TRAINING_PORTAL;
         </sql>
     </changeSet>
 
@@ -39,7 +39,7 @@
     <changeSet author="ntishkevich" id="20150305-03" runAlways="true" runOnChange="true">
         <comment>Users</comment>
         <sql>
-            CREATE TABLE TRAINING_CENTER.USERS
+            CREATE TABLE TRAINING_PORTAL.USERS
             (
             USER_ID BIGINT PRIMARY KEY DEFAULT nextval('user_seq'),
             NAME varchar(2000),
@@ -66,7 +66,7 @@
     <changeSet author="ntishkevich" id="20150305-05" runAlways="true" runOnChange="true">
         <comment>Courses</comment>
         <sql>
-            CREATE TABLE TRAINING_CENTER.COURSES
+            CREATE TABLE TRAINING_PORTAL.COURSES
             (
             COURSE_ID BIGINT PRIMARY KEY DEFAULT nextval('course_seq'),
             NAME varchar(2000) NOT NULL,
@@ -76,10 +76,10 @@
             PRICE numeric,
             DESCRIPTION varchar(2000),
             REQUIREMENTS varchar(2000) NOT NULL,
-            MAX_NUMBER_STUDENTS varchar(2000) NOT NULL,
+            MAX_NUMBER_STUDENTS INTEGER NOT NULL,
             LECTURER_ID BIGINT NOT NULL,
             ADD_DATE timestamp default now(),
-            CONSTRAINT FK_LECTURER_ID FOREIGN KEY(LECTURER_ID) REFERENCES TRAINING_CENTER.USERS(USER_ID) ON DELETE RESTRICT
+            CONSTRAINT FK_LECTURER_ID FOREIGN KEY(LECTURER_ID) REFERENCES TRAINING_PORTAL.USERS(USER_ID) ON DELETE RESTRICT
             )
         </sql>
     </changeSet>
@@ -87,13 +87,13 @@
     <changeSet author="ntishkevich" id="20150305-06" runAlways="true" runOnChange="true">
         <comment>Courses_Users</comment>
         <sql>
-            CREATE TABLE TRAINING_CENTER.COURSES_USERS
+            CREATE TABLE TRAINING_PORTAL.COURSES_USERS
             (
             COURSE_ID BIGINT NOT NULL ,
             USER_ID BIGINT NOT NULL,
             PRIMARY KEY (COURSE_ID, USER_ID),
-            CONSTRAINT FK_COURSE_ID FOREIGN KEY(COURSE_ID) REFERENCES TRAINING_CENTER.COURSES(COURSE_ID) ON DELETE RESTRICT,
-            CONSTRAINT FK_USER_ID FOREIGN KEY(USER_ID) REFERENCES TRAINING_CENTER.USERS(USER_ID) ON DELETE RESTRICT
+            CONSTRAINT FK_COURSE_ID FOREIGN KEY(COURSE_ID) REFERENCES TRAINING_PORTAL.COURSES(COURSE_ID) ON DELETE RESTRICT,
+            CONSTRAINT FK_USER_ID FOREIGN KEY(USER_ID) REFERENCES TRAINING_PORTAL.USERS(USER_ID) ON DELETE RESTRICT
             )
         </sql>
     </changeSet>

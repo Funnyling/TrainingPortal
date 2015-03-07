@@ -2,25 +2,54 @@ package by.artezio.trainingportal.model;
 
 import by.artezio.trainingportal.model.enumeration.CourseStatus;
 
+import javax.persistence.*;
 import java.math.BigDecimal;
-import java.util.Calendar;
+import java.util.Date;
 import java.util.Set;
 
 /**
  * Created by user on 04.03.2015.
  */
+@Entity
+@Table(schema = "TRAINING_PORTAL", name = "COURSES")
 public class Course extends BaseEntity {
 
+    @Id
+    @Column(name = "COURSE_ID")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long courseId;
+
+    @Column(name = "NAME")
     private String name;
+
+    @Column(name = "DESCRIPTION")
     private String description;
+
+    @Column(name = "REQUIREMENTS")
     private String requirements;
+
+    @Column(name = "STATUS")
+    @Enumerated(EnumType.STRING)
     private CourseStatus status;
+
+    @Column(name = "MAX_NUMBER_STUDENTS")
     private Integer maxNumberStudents;
+
+    @Column(name = "PRICE")
     private BigDecimal price;
-    private Calendar startDate;
-    private Calendar endDate;
+
+    @Column(name = "START_DATE")
+    private Date startDate;
+
+    @Column(name = "END_DATE")
+    private Date endDate;
+
+    @ManyToOne
+    @JoinColumn(name = "LECTURER_ID", referencedColumnName = "USER_ID")
     private User lecturer;
+
+    @ManyToMany
+    @JoinTable(schema = "TRAINING_PORTAL", name="COURSES_USERS", joinColumns={@JoinColumn(name="COURSE_ID")}, inverseJoinColumns={@JoinColumn(name="USER_ID")})
     private Set<User> students;
 
     public Long getCourseId() {
@@ -79,19 +108,19 @@ public class Course extends BaseEntity {
         this.price = price;
     }
 
-    public Calendar getStartDate() {
+    public Date getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(Calendar startDate) {
+    public void setStartDate(Date startDate) {
         this.startDate = startDate;
     }
 
-    public Calendar getEndDate() {
+    public Date getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(Calendar endDate) {
+    public void setEndDate(Date endDate) {
         this.endDate = endDate;
     }
 
