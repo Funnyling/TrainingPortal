@@ -12,5 +12,8 @@
 </head>
 <body>
 <h1>Hello World!</h1>
+<c:if test="${currentUser ne null}">
+  <h1>Hello ${currentUser}!</h1>
+</c:if>
 </body>
 </html>

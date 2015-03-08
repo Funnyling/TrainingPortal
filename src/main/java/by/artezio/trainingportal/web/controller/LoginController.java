@@ -36,13 +36,12 @@ public class LoginController {
         validator.validate(user, result);
         if (result.hasErrors()) {
             modelAndView.setViewName("registration/registration");
-            return modelAndView;
         } else {
             user.setRole(UserRole.LECTURER);
             userService.save(user);
             status.setComplete();
-            return modelAndView;
         }
+        return modelAndView;
     }
 
     @RequestMapping(value = "/signin.html", method = RequestMethod.GET)
