@@ -9,18 +9,18 @@
     <http pattern="/resources/**" security="none" />
 
     <http auto-config="true" use-expressions="true">
-        <form-login login-page="/signin "
-                    authentication-failure-url="/signin" default-target-url="/main.html" />
+        <form-login
+                login-page="/signin.html"
+                default-target-url="/main.html"
+                authentication-failure-url="/signin.html?error"/>
         <logout logout-success-url="/signin" />
 
 
     </http>
 
     <authentication-manager>
-        <authentication-provider>
-            <jdbc-user-service data-source-ref="dataSource"/>
-        </authentication-provider>
+        <authentication-provider user-service-ref="customUserDetailsService"></authentication-provider>
     </authentication-manager>
 
-
+    <beans:bean id="customUserDetailsService" class="by.artezio.trainingportal.utils.CustomUserDetailsService"></beans:bean>
 </beans:beans>
