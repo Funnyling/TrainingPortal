@@ -1,6 +1,7 @@
 package by.artezio.trainingportal.web.controller;
 
 import by.artezio.trainingportal.model.User;
+import by.artezio.trainingportal.utils.CustomUserDetails;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
@@ -18,8 +19,8 @@ public class HelloController {
         ModelAndView modelAndView = new ModelAndView("main");
         Object currentUser =  SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if (currentUser instanceof UserDetails) {
-            String userName = ((User)currentUser).getName();
-            modelAndView.addObject("currentUser", userName);
+            User user = ((CustomUserDetails)currentUser).getUser();
+            modelAndView.addObject("currentUser", user.getName());
         }
         return modelAndView;
     }
