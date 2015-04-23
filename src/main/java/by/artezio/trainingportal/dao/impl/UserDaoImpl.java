@@ -7,8 +7,6 @@ import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
-import javax.jws.soap.SOAPBinding;
-
 /**
  * Created by user on 05.03.2015.
  */
@@ -18,7 +16,7 @@ public class UserDaoImpl extends AbstractHibernateDao<User> implements UserDao {
     @Override
     public User findUserByLogin(String login) {
         Criteria criteria = getSession().createCriteria(getPersistentClass())
-                .add(Restrictions.eq("login",login));
+                .add(Restrictions.eq("login", login));
         User user = (User) criteria.uniqueResult();
         return user;
     }
