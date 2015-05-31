@@ -5,7 +5,6 @@ import by.artezio.trainingportal.model.User;
 import by.artezio.trainingportal.service.AbstractSpringService;
 import by.artezio.trainingportal.service.UserService;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Created by user on 05.03.2015.
@@ -14,7 +13,6 @@ import org.springframework.transaction.annotation.Transactional;
 public class UserServiceImpl extends AbstractSpringService<UserDao, User> implements UserService {
 
     @Override
-    @Transactional
     public User findUserByLogin(String login) {
         return getDao().findUserByLogin(login);
     }

@@ -1,12 +1,11 @@
 package by.artezio.trainingportal.dao;
 
 import by.artezio.trainingportal.model.BaseEntity;
-import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.criterion.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
@@ -40,6 +39,7 @@ abstract public class AbstractHibernateDao <T extends BaseEntity> implements Dao
         }
     }
 
+    @Transactional
     public List<T> getAll() {
         return (List<T>) getSession().createCriteria(getPersistentClass()).list();
     }
@@ -54,10 +54,12 @@ abstract public class AbstractHibernateDao <T extends BaseEntity> implements Dao
         return persistentClass;
     }
 
+    @Transactional
     public void saveOrUpdate(T entity) {
         getSession().saveOrUpdate(entity);
     }
 
+    @Transactional
     public final void delete(T entity) {
         getSession().delete(entity);
     }
