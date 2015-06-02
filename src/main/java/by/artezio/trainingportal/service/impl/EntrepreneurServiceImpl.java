@@ -11,4 +11,9 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class EntrepreneurServiceImpl extends AbstractSpringService<EntrepreneurDao, Entrepreneur> implements EntrepreneurService {
+
+    @Override
+    public Entrepreneur load(String guid) {
+        return getDao().load(guid);
+    }
 }

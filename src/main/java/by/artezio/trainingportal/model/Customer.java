@@ -23,6 +23,10 @@ public abstract class Customer extends BaseEntity {
 
     private Date registrationDate;
 
+    private Date createDate;
+
+    private Date updateDate;
+
     private String customerType;
 
     @Id
@@ -72,6 +76,26 @@ public abstract class Customer extends BaseEntity {
 //    public void setCustomerType(String customerType) {
 //        this.customerType = customerType;
 //    }
+
+    @Column(name = "create_date", nullable = false)
+    @Temporal(TemporalType.TIMESTAMP)
+    public Date getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
+    }
+
+    @Column(name = "update_date")
+    @Temporal(TemporalType.TIMESTAMP)
+    public Date getUpdateDate() {
+        return updateDate;
+    }
+
+    public void setUpdateDate(Date updateDate) {
+        this.updateDate = updateDate;
+    }
 
     @Override
     public boolean equals(Object o) {

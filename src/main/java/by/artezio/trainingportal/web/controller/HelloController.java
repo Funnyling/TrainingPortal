@@ -49,12 +49,16 @@ public class HelloController {
             Entrepreneur entrepreneur = new Entrepreneur();
             entrepreneur.setRegistrationDate(new Date());
             entrepreneur.setInnNumber("81725151");
-            entrepreneur.setGuid(UUID.randomUUID().toString());
+            String entrepreneurGuid = UUID.randomUUID().toString();
+            entrepreneur.setGuid(entrepreneurGuid);
             entrepreneur.setFirstname("Test firstname");
             entrepreneur.setSurname("Test surname");
             entrepreneur.setMiddlename("Test middlename");
             entrepreneur.setKppNumber("261987122");
             entrepreneurService.save(entrepreneur);
+            Entrepreneur oldEntrepreneur = entrepreneurService.load(entrepreneurGuid);
+            oldEntrepreneur.setSurname("Updated Test surname");
+            entrepreneurService.save(oldEntrepreneur);
         }
         return modelAndView;
     }
