@@ -12,7 +12,7 @@ import java.util.Date;
  * Created by user on 02.06.2015.
  */
 @Component
-public class MyOwnInterceptor extends EmptyInterceptor {
+public class SaveOrUpdateInterceptor extends EmptyInterceptor {
     @Override
     public boolean onSave(Object entity, Serializable id, Object[] state, String[] propertyNames, Type[] types) {
         if (entity instanceof Customer) {

@@ -41,6 +41,6 @@
     <bean id="persistenceExceptionTranslationPostProcessor"
           class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
 
-    <bean id="myOwnInterceptor" class="by.artezio.trainingportal.utils.interceptors.MyOwnInterceptor"/>
+    <bean id="myOwnInterceptor" class="by.artezio.trainingportal.utils.interceptors.SaveOrUpdateInterceptor"/>
 
 </beans>
