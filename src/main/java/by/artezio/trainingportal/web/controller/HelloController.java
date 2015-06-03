@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Date;
-import java.util.UUID;
+import java.util.List;
 
 /**
  * Created by user on 04.03.2015.
@@ -44,22 +44,23 @@ public class HelloController {
             organization.setInnNumber("124141441");
             organization.setKppNumber("124151251");
             organization.setRegistrationDate(new Date());
-            organization.setGuid(UUID.randomUUID().toString());
+//            organization.setGuid(UUID.randomUUID().toString());
 
             organizationService.save(organization);
 
             Entrepreneur entrepreneur = new Entrepreneur();
             entrepreneur.setRegistrationDate(new Date());
             entrepreneur.setInnNumber("81725151");
-            String entrepreneurGuid = UUID.randomUUID().toString();
-            entrepreneur.setGuid(entrepreneurGuid);
+//            String entrepreneurGuid = UUID.randomUUID().toString();
+//            entrepreneur.setGuid(entrepreneurGuid);
             entrepreneur.setFirstname("Test firstname");
             entrepreneur.setSurname("Test surname");
             entrepreneur.setMiddlename("Test middlename");
             entrepreneur.setKppNumber("261987122");
 
             entrepreneurService.save(entrepreneur);
-            Entrepreneur oldEntrepreneur = entrepreneurService.load(entrepreneurGuid);
+            List<Entrepreneur> all = entrepreneurService.getAll();
+            Entrepreneur oldEntrepreneur = all.get(0);
             oldEntrepreneur.setSurname("Updated Test surname");
             entrepreneurService.save(oldEntrepreneur);
         }

@@ -11,7 +11,7 @@ import java.util.Objects;
  */
 @Entity
 @Inheritance
-@DiscriminatorColumn(name = "cutomerType")
+@DiscriminatorColumn(name = "customer_type", discriminatorType = DiscriminatorType.STRING)
 @Table(name = "customer", schema = "jpa_hibernate_schema")
 public abstract class Customer extends BaseEntity {
 
@@ -31,7 +31,8 @@ public abstract class Customer extends BaseEntity {
 
     @Id
     @Column(name = "guid")
-    @GenericGenerator(name = "uuid", strategy = "uuid2")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "CustomUUIDGenerator")
+    @GenericGenerator(name = "CustomUUIDGenerator", strategy = "by.artezio.trainingportal.utils.CustomUUIDGenerator")
     public String getGuid() {
         return guid;
     }
@@ -67,15 +68,6 @@ public abstract class Customer extends BaseEntity {
     public void setRegistrationDate(Date registrationDate) {
         this.registrationDate = registrationDate;
     }
-
-//    @Column(name = "customer_type", nullable = false)
-//    public String getCustomerType() {
-//        return customerType;
-//    }
-//
-//    public void setCustomerType(String customerType) {
-//        this.customerType = customerType;
-//    }
 
     @Column(name = "create_date", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)

@@ -8,7 +8,7 @@ import java.util.Objects;
  */
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorValue(value = "organization")
+@DiscriminatorValue(value = "ORGANIZATION")
 public class Organization extends Customer {
 
     private String organizationName;
