@@ -37,33 +37,36 @@ public class HelloController {
             User user = ((CustomUserDetails)currentUser).getUser();
             modelAndView.addObject("currentUser", user.getName());
         }
-        System.out.println(enabled);
-        if (enabled) {
-            Organization organization = new Organization();
-            organization.setOrganizationName("Test organization");
-            organization.setInnNumber("124141441");
-            organization.setKppNumber("124151251");
-            organization.setRegistrationDate(new Date());
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/inheritance.html")
+    public ModelAndView inheritance() {
+        ModelAndView modelAndView = new ModelAndView("main");
+        Organization organization = new Organization();
+        organization.setOrganizationName("Test organization");
+        organization.setInnNumber("124141441");
+        organization.setKppNumber("124151251");
+        organization.setRegistrationDate(new Date());
 //            organization.setGuid(UUID.randomUUID().toString());
 
-            organizationService.save(organization);
+        organizationService.save(organization);
 
-            Entrepreneur entrepreneur = new Entrepreneur();
-            entrepreneur.setRegistrationDate(new Date());
-            entrepreneur.setInnNumber("81725151");
+        Entrepreneur entrepreneur = new Entrepreneur();
+        entrepreneur.setRegistrationDate(new Date());
+        entrepreneur.setInnNumber("81725151");
 //            String entrepreneurGuid = UUID.randomUUID().toString();
 //            entrepreneur.setGuid(entrepreneurGuid);
-            entrepreneur.setFirstname("Test firstname");
-            entrepreneur.setSurname("Test surname");
-            entrepreneur.setMiddlename("Test middlename");
-            entrepreneur.setKppNumber("261987122");
+        entrepreneur.setFirstname("Test firstname");
+        entrepreneur.setSurname("Test surname");
+        entrepreneur.setMiddlename("Test middlename");
+        entrepreneur.setKppNumber("261987122");
 
-            entrepreneurService.save(entrepreneur);
-            List<Entrepreneur> all = entrepreneurService.getAll();
-            Entrepreneur oldEntrepreneur = all.get(0);
-            oldEntrepreneur.setSurname("Updated Test surname");
-            entrepreneurService.save(oldEntrepreneur);
-        }
+        entrepreneurService.save(entrepreneur);
+        List<Entrepreneur> all = entrepreneurService.getAll();
+        Entrepreneur oldEntrepreneur = all.get(0);
+        oldEntrepreneur.setSurname("Updated Test surname");
+        entrepreneurService.save(oldEntrepreneur);
         return modelAndView;
     }
 }

@@ -6,13 +6,11 @@ import by.artezio.trainingportal.model.User;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Created by user on 05.03.2015.
  */
 @Repository
-@Transactional
 public class UserDaoImpl extends AbstractHibernateDao<User> implements UserDao {
 
     @Override

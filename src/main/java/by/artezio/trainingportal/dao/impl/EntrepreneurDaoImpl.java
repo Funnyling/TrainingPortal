@@ -6,13 +6,11 @@ import by.artezio.trainingportal.model.Entrepreneur;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Created by user on 31.05.2015.
  */
 @Repository
-@Transactional
 public class EntrepreneurDaoImpl extends AbstractHibernateDao<Entrepreneur> implements EntrepreneurDao {
 
     @Override
