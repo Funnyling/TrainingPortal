@@ -16,7 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
  */
 @Controller
 @SessionAttributes("user")
-public class LoginController {
+public class UserController {
 
     @Autowired
     private UserService userService;
@@ -37,7 +37,7 @@ public class LoginController {
         if (result.hasErrors()) {
             modelAndView.setViewName("registration/registration");
         } else {
-            user.setRole(UserRole.LECTURER);
+            user.setRole(UserRole.STUDENT);
             userService.save(user);
             status.setComplete();
         }
