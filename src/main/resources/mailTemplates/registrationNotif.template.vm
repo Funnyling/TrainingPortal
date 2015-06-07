@@ -1,0 +1,29 @@
+<html>
+<body>
+<h2>You were registered at our traning center</h2>
+<p>Don't reply on this message</p>
+--------------------------------------------------------------------
+<br>
+<h3>Your credentials:</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Login</th>
+            <th>E-mail</th>
+            <th>Name</th>
+            <th>Surname</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>${user.login}</td>
+            <td>${user.email}</td>
+            <td>${user.name}</td>
+            <td>${user.surname}</td>
+        </tr>
+    </tbody>
+</table>
+<br>
+---------------------------------------------------------------------
+</body>
+</html>

@@ -3,6 +3,7 @@ package by.artezio.trainingportal.web.controller;
 import by.artezio.trainingportal.model.User;
 import by.artezio.trainingportal.model.enumeration.UserRole;
 import by.artezio.trainingportal.service.UserService;
+import by.artezio.trainingportal.utils.NotificationSender;
 import by.artezio.trainingportal.web.validator.UserValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,6 +21,9 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private NotificationSender notificationService;
 
     @RequestMapping(value = "/registration.html", method = RequestMethod.GET)
     public ModelAndView registrationGet() {
@@ -40,6 +44,7 @@ public class UserController {
             user.setRole(UserRole.STUDENT);
             userService.save(user);
             status.setComplete();
+            notificationService.sendNotif(user);
         }
         return modelAndView;
     }

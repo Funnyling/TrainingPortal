@@ -10,6 +10,7 @@
 
        <context:component-scan base-package="by.artezio.trainingportal.dao"/>
        <context:component-scan base-package="by.artezio.trainingportal.service"/>
+       <context:component-scan base-package="by.artezio.trainingportal.utils"/>
 
        <import resource="classpath:dao-context.xml"/>
 
